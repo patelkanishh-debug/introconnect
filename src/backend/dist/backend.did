@@ -1,0 +1,73 @@
+type UserProfilePublic = 
+ record {
+   createdAt: Timestamp;
+   displayName: text;
+   id: UserId;
+   interests: vec Interest;
+ };
+type UserId = principal;
+type Timestamp = int;
+type Reaction = 
+ record {
+   emoji: text;
+   userId: UserId;
+ };
+type MessagePublic = 
+ record {
+   chatId: ChatId;
+   id: MessageId;
+   reactions: vec Reaction;
+   readBy: vec UserId;
+   senderId: UserId;
+   sentAt: Timestamp;
+   "text": text;
+ };
+type MessageId = nat;
+type Interest = 
+ variant {
+   Art;
+   Books;
+   Food;
+   Gaming;
+   Music;
+   Sports;
+   Tech;
+   Travel;
+ };
+type IcebreakerPrompt = 
+ record {
+   id: nat;
+   "text": text;
+ };
+type ChatSummary = 
+ record {
+   chatId: ChatId;
+   lastMessageAt: opt Timestamp;
+   lastMessageText: opt text;
+   partnerDisplayName: text;
+   partnerId: UserId;
+   unreadCount: nat;
+ };
+type ChatId = nat;
+service : {
+  addReaction: (chatId: ChatId, messageId: MessageId, emoji: text) -> ();
+  findNewMatch: () -> (opt ChatId);
+  getChatMessages: (chatId: ChatId) -> (vec MessagePublic) query;
+  getIcebreakerPrompt: (chatId: ChatId) -> (IcebreakerPrompt) query;
+  getMyProfile: () -> (opt UserProfilePublic) query;
+  getReactions: (chatId: ChatId, messageId: MessageId) ->
+   (vec record {
+          text;
+          nat;
+        }) query;
+  listChats: () -> (vec ChatSummary) query;
+  markMessagesRead: (chatId: ChatId) -> ();
+  refreshIcebreakerPrompt: (chatId: ChatId, currentPromptId: nat) ->
+   (IcebreakerPrompt) query;
+  registerUser: (displayName: text, interests: vec Interest) ->
+   (UserProfilePublic);
+  removeReaction: (chatId: ChatId, messageId: MessageId) -> ();
+  sendMessage: (chatId: ChatId, "text": text) -> (MessagePublic);
+  updateProfile: (displayName: text, interests: vec Interest) ->
+   (UserProfilePublic);
+}

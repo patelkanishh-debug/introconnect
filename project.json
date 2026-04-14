@@ -1,0 +1,24 @@
+{
+  "overview": "IntroConnect is a fun, low-pressure communication platform built for introverts to meet new people anonymously using only their names. Users pick their interests, get matched with compatible strangers, and chat with guided icebreaker prompts and emoji reactions to keep conversations lively.",
+  "features": [
+    "Name-only anonymous profiles — no photos, no personal info",
+    "Interest-based matching (Books, Gaming, Music, Sports, Art, Tech, Travel, Food) with random fallback",
+    "1-on-1 real-time chat with polling-based message refresh",
+    "Icebreaker conversation starter prompts at the top of every chat",
+    "Emoji reactions on messages (😂 ❤️ 👍 🔥 😮 👏) with counts",
+    "Active chats list with unread message indicators",
+    "Find new match or end chat anytime",
+    "Profile page to update name and interests"
+  ],
+  "category": "social",
+  "tags": [
+    "social",
+    "chat",
+    "introvert",
+    "anonymous",
+    "matching",
+    "icebreaker",
+    "communication"
+  ],
+  "last_updated": "2026-04-09T06:56:38.914Z"
+}

@@ -1,0 +1,87 @@
+// Version: 1.0.0
+type ChatId__401279189 = ChatId__922926295;
+type ChatId__922926295 = Nat;
+type Chat__476876523 =
+  {
+    createdAt : Timestamp__170298736;
+    id : ChatId__401279189;
+    var lastMessageAt : ?Timestamp__170298736;
+    var lastMessageId : ?MessageId__51635678;
+    var lastMessageText : ?Text;
+    participants : [UserId__485427668]
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Interest__465557493 =
+  {#Art; #Books; #Food; #Gaming; #Music; #Sports; #Tech; #Travel};
+type Interest__805814069 = Interest__465557493;
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type MatchHistoryEntry__427803074 =
+  {
+    chatId : ChatId__401279189;
+    matchedWith : UserId__485427668;
+    userId : UserId__485427668
+  };
+type MessageId__291319400 = Nat;
+type MessageId__51635678 = MessageId__291319400;
+type Message__659124775 =
+  {
+    chatId : ChatId__401279189;
+    id : MessageId__51635678;
+    var reactions : [Reaction__375188021];
+    var readBy : [UserId__485427668];
+    senderId : UserId__485427668;
+    sentAt : Timestamp__170298736;
+    text : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Reaction__375188021 = {emoji : Text; userId : UserId__485427668};
+type Timestamp__170298736 = Timestamp__301639476;
+type Timestamp__301639476 = Int;
+type UserId__158757552 = Principal;
+type UserId__485427668 = UserId__158757552;
+type UserProfile__925073938 =
+  {
+    var createdAt : Timestamp__170298736;
+    var displayName : Text;
+    id : UserId__485427668;
+    var interests : [Interest__805814069]
+  };
+actor {
+  stable chats :
+    {
+      var root : Node__46230540<ChatId__401279189, Chat__476876523>;
+      var size : Nat__490723111
+    };
+  stable matchHistory :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?MatchHistoryEntry__427803074]];
+      var elementIndex : Nat__490723111
+    };
+  stable messages :
+    {
+      var root :
+        Node__46230540<ChatId__401279189, List__415060402<Message__659124775>>;
+      var size : Nat__490723111
+    };
+  stable nextChatId : {var value : Nat};
+  stable nextMessageId : {var value : Nat};
+  stable users :
+    {
+      var root : Node__46230540<UserId__485427668, UserProfile__925073938>;
+      var size : Nat__490723111
+    }
+};

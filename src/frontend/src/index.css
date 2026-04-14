@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Lora";
+    --font-body: "Plus Jakarta Sans";
+    --font-mono: monospace;
+    --radius: 0.875rem;
+
+    --background: 0.965 0.01 240;
+    --foreground: 0.25 0.02 240;
+    --card: 0.975 0.01 240;
+    --card-foreground: 0.25 0.02 240;
+    --popover: 0.98 0 0;
+    --popover-foreground: 0.25 0.02 240;
+
+    --primary: 0.52 0.16 177;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.68 0.12 192;
+    --secondary-foreground: 0.15 0 0;
+    --muted: 0.88 0.02 240;
+    --muted-foreground: 0.55 0.01 240;
+
+    --accent: 0.68 0.18 25;
+    --accent-foreground: 0.98 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.92 0.01 240;
+    --input: 0.94 0.01 240;
+    --ring: 0.52 0.16 177;
+
+    --chart-1: 0.68 0.18 25;
+    --chart-2: 0.52 0.16 177;
+    --chart-3: 0.68 0.12 192;
+    --chart-4: 0.62 0.13 265;
+    --chart-5: 0.75 0.09 148;
+
+    --sidebar: 0.975 0.01 240;
+    --sidebar-foreground: 0.25 0.02 240;
+    --sidebar-primary: 0.52 0.16 177;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.68 0.18 25;
+    --sidebar-accent-foreground: 0.15 0 0;
+    --sidebar-border: 0.92 0.01 240;
+    --sidebar-ring: 0.52 0.16 177;
+  }
+
+  .dark {
+    --background: 0.15 0.01 240;
+    --foreground: 0.92 0.01 240;
+    --card: 0.19 0.01 240;
+    --card-foreground: 0.92 0.01 240;
+    --popover: 0.22 0.01 240;
+    --popover-foreground: 0.92 0.01 240;
+
+    --primary: 0.72 0.13 177;
+    --primary-foreground: 0.15 0.01 240;
+
+    --secondary: 0.35 0.08 192;
+    --secondary-foreground: 0.88 0.01 240;
+    --muted: 0.28 0.01 240;
+    --muted-foreground: 0.62 0.01 240;
+
+    --accent: 0.72 0.15 25;
+    --accent-foreground: 0.15 0.01 240;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.15 0.01 240;
+
+    --border: 0.27 0.01 240;
+    --input: 0.27 0.01 240;
+    --ring: 0.72 0.13 177;
+
+    --chart-1: 0.72 0.15 25;
+    --chart-2: 0.72 0.13 177;
+    --chart-3: 0.68 0.12 192;
+    --chart-4: 0.65 0.12 265;
+    --chart-5: 0.75 0.09 148;
+
+    --sidebar: 0.19 0.01 240;
+    --sidebar-foreground: 0.92 0.01 240;
+    --sidebar-primary: 0.72 0.13 177;
+    --sidebar-primary-foreground: 0.15 0.01 240;
+    --sidebar-accent: 0.72 0.15 25;
+    --sidebar-accent-foreground: 0.92 0.01 240;
+    --sidebar-border: 0.27 0.01 240;
+    --sidebar-ring: 0.72 0.13 177;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .emoji-reaction {
+    @apply inline-flex items-center justify-center px-2 py-1 rounded-full text-sm bg-muted/30 hover:bg-muted/60 cursor-pointer transition-smooth;
+  }
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/assets/fonts/Lora.woff2") format("woff2"), local("Lora");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2"),
+    local("Plus Jakarta Sans");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
